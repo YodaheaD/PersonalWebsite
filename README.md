@@ -1,7 +1,7 @@
 # `image-repo-upload`
 
 <h2 align="center">
-  <img height="256" width="256" src="./src/assets/upload.svg">
+  <img height="256" width="256" src="./favicon.ico" alt="favicon">
 </h2>
 
 <h3 align="center">A simple UI for uploading images to my personal repository!</h3>
