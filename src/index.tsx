@@ -93,32 +93,54 @@ function FileInput() {
     // alert("Submitting with Date: " + returnUnixTimeStamp());
     /**
      *  [{"description":"","imageName":"BogotoToMedllin","notes":"","tags":"",
-	 * "dateTaken":"1736744400000","imagePath":"BogotoToMedllin.pdf","filetype":"pdf","uploader":"user email"},{"description":"","imageName":"Arlanda_ticket","notes":"","tags":"","dateTaken":"1736744400000","imagePath":"Arlanda ticket.pdf","filetype":"pdf","uploader":"user email"}]
+     * "dateTaken":"1736744400000","imagePath":"BogotoToMedllin.pdf","filetype":"pdf","uploader":"user email"},{"description":"","imageName":"Arlanda_ticket","notes":"","tags":"","dateTaken":"1736744400000","imagePath":"Arlanda ticket.pdf","filetype":"pdf","uploader":"user email"}]
      */
     event.preventDefault();
-    // const formData = new FormData();
-    // files.forEach((file) => {
-    //   formData.append("monfichier", file);
-    // });
     const fileNamesHolder: uploadData[] = [];
     const formData = new FormData();
     for (let i = 0; i < files.length; i++) {
-      //console.log(`File is ${file[i].name}`);
       fileNamesHolder.push({
-        imagePath: files[i].name.replace(/ /g, "_"),
-        dateTaken: returnUnixTimeStamp(),
-        uploader: "ImageUploadApp",
-        filetype: files[i].type.split("/")[1],
-        imageName: files[i].name.split(".")[0].replace(/ /g, "_"),  
-        description: "",
-        notes: "",
-        tags: "",
+      imagePath: files[i].name.replace(/ /g, "_"),
+      dateTaken: returnUnixTimeStamp(),
+      uploader: "ImageUploadApp",
+      filetype: files[i].type.split("/")[1],
+      imageName: files[i].name.split(".")[0].replace(/ /g, "_"),
+      description: "",
+      notes: "",
+      tags: "",
       });
       formData.append("monfichier", files[i]);
     }
     formData.append("data", JSON.stringify(fileNamesHolder));
     console.log("data is");
     console.log(fileNamesHolder);
+    // const response = await fetch(import.meta.env.VITE_SOME_URL_UPLOAD, {
+    //   method: "POST",
+    //   body: formData,
+    //   headers: {
+    //   "Content-Type": "multipart/form-data",
+    //   "Authorization": `Bearer ${import.meta.env.VITE_SOME_TOKEN}`,
+    //   "Accept": "application/json",
+    //   },
+    // });
+
+    // if(response.status === 201){
+    //   alert("Files uploaded successfully");
+    //   window.location.reload();
+    // }
+    // if (!response.ok) {
+    //   throw new Error("File upload failed");
+    // }
+    // // if repsonse code is 400 or 500 then throw error and alert
+    // if (response.status === 400 || response.status === 500) {
+    //   throw new Error("File upload failed");
+    // }
+    // //
+    // if (response.ok) {
+    //   // alert and reload page
+    //   alert("Files uploaded successfully");
+    //   window.location.reload();
+    // }
 
     // try {
     //   const response = await fetch(
@@ -132,12 +154,12 @@ function FileInput() {
     //   if (!response.ok) {
     //     throw new Error("File upload failed");
     //   }
-	//   //
-	//   if(response.ok){
-	// 	// alert and reload page
-	// 	alert("Files uploaded successfully");
-	// 	window.location.reload();
-	//   }
+    //   //
+    //   if(response.ok){
+    // 	// alert and reload page
+    // 	alert("Files uploaded successfully");
+    // 	window.location.reload();
+    //   }
 
     //   //alert("Files uploaded successfully");
     // } catch (error) {
